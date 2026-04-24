@@ -3,6 +3,7 @@ import '../models/card_model.dart';
 
 class CardWidget extends StatelessWidget {
   final YugiohCard? card;
+  // If isFaceDown is true and card is null, it represents a generic hidden card (e.g. opponent's hand).
   final bool isFaceDown;
   final VoidCallback? onTap;
   final double width;

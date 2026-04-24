@@ -1,6 +1,9 @@
 import 'card_model.dart';
 
 class PlayerState {
+  static const int maxMonsterZones = 5;
+  static const int maxSpellTrapZones = 5;
+
   int lifePoints;
   List<YugiohCard> deck;
   List<YugiohCard> hand;
@@ -17,8 +20,8 @@ class PlayerState {
     List<YugiohCard>? graveyard,
   })  : deck = deck ?? [],
         hand = hand ?? [],
-        monsterZone = monsterZone ?? List.filled(5, null),
-        spellTrapZone = spellTrapZone ?? List.filled(5, null),
+        monsterZone = monsterZone ?? List.filled(maxMonsterZones, null),
+        spellTrapZone = spellTrapZone ?? List.filled(maxSpellTrapZones, null),
         graveyard = graveyard ?? [];
 
   void drawCard() {
