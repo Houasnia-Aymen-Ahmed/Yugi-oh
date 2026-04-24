@@ -29,7 +29,7 @@ class PlayerState {
 
   bool playMonster(YugiohCard card, int zoneIndex) {
     if (!card.isMonster) return false;
-    if (zoneIndex < 0 || zoneIndex >= 5) return false;
+    if (zoneIndex < 0 || zoneIndex >= monsterZone.length) return false;
     if (monsterZone[zoneIndex] != null) return false; // Zone occupied
 
     if (hand.contains(card)) {

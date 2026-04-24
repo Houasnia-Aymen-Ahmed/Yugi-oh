@@ -27,10 +27,10 @@ class CardWidget extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black, width: 2),
           borderRadius: BorderRadius.circular(4),
-          color: card == null
-              ? Colors.transparent // Empty zone
-              : isFaceDown
-                  ? Colors.brown // Card back
+          color: isFaceDown
+              ? Colors.brown // Card back (has precedence over null card)
+              : card == null
+                  ? Colors.transparent // Empty zone
                   : _getCardColor(card!.type),
         ),
         child: _buildCardContent(),
@@ -39,13 +39,13 @@ class CardWidget extends StatelessWidget {
   }
 
   Widget _buildCardContent() {
-    if (card == null) {
-      return const SizedBox(); // Empty zone
-    }
     if (isFaceDown) {
       return const Center(
         child: Icon(Icons.circle, color: Colors.orange, size: 20), // Placeholder back
       );
+    }
+    if (card == null) {
+      return const SizedBox(); // Empty zone
     }
 
     return Padding(
